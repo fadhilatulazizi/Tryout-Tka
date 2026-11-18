@@ -1,0 +1,77 @@
+@import url("responsive.css");
+
+h2 {
+  letter-spacing: 0px;
+  line-height: 28px;
+  color: #00CCCC;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h3 {
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px
+}
+table {
+  border-collapse: collapse;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button {
+  border:1px solid #B7B7B7;
+  padding:8px 22px;
+  color:#000;
+  font-size:16px;
+  text-shadow:0 1px 2px #fff;
+  -webkit-box-shadow:0 1px 2px #ccc;
+  -moz-box-shadow:0 1px 2px #ccc;
+  box-shadow:0 1px 2px #ccc;
+  -webkit-border-radius:16px;
+  -moz-border-radius:16px;
+  border-radius:16px;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+button:hover {
+  background-position:0 -35px;
+  background-color:#DFDFDF;
+  border-color:#AFAFAF;
+  color:#000;
+  cursor:pointer;
+  text-decoration:none;
+}
+
+input[type="text"],
+input[type="password"]
+{
+  padding: 10px;
+  border: solid 1px #c9c9c9;
+  transition: border 0.3s;
+  font-size:20px;
+  text-align:left;
+}
+.style-2 input[type="text"]:focus,
+.style-2 input[type="text"].focus {
+  border: solid 5px #969696;
+}
+
+.token {
+  letter-spacing: 0px;
+  line-height: 39px;
+  color: #00CCCC;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 70px;
+  font-weight: bold;
+}
+.tabel_sederhana, th, td, tr{
+	border: 1px solid #00CCCC;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.tabel_nol, tr {
+	border: 0px solid #00CCCC;
+}

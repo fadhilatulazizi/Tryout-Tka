@@ -1,0 +1,49 @@
+@import url("responsive.css");
+
+.table2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #444;
+    border-collapse: collapse;
+    width: 100%;
+    border: 0px;
+	text-align: center;
+	vertical-align: middle;
+}
+.table2, th, td {
+  border: 0px solid black;
+  
+}
+h2 {
+  letter-spacing: 0px;
+  text-align: center;
+  line-height: 28px;
+  color: #00CCCC;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h3 {
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px
+}
+
+table {
+  border-collapse: collapse;
+  font-family: Arial, Helvetica, sans-serif;
+  vertical-align: middle;
+}
+
+table, th, td {
+  border: 1px solid #00CCCC;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.text_normal{
+font-family: Arial;
+font-size: 20px;
+
+}

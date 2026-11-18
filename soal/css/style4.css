@@ -1,0 +1,340 @@
+@import url("responsive.css");
+
+.text_normal{
+font-family: Arial;
+font-size: 20px;
+
+}
+
+.nomor{
+	padding: 0px 5px;
+	color:#ff3e3e;;
+	background: white;
+	border: solid 2px #ff3e3e;
+	display: table;
+	transition: .3s ease-in;
+	font-size: 25px;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button {
+  border:1px solid #B7B7B7;
+  padding:10px 22px;
+  background:#CCFF66;
+
+  font-size:18px;
+  text-shadow:0 1px 2px #fff;
+  -webkit-box-shadow:0 1px 2px #ccc;
+  -moz-box-shadow:0 1px 2px #ccc;
+  box-shadow:0 1px 2px #ccc;
+  -webkit-border-radius:16px;
+  -moz-border-radius:16px;
+  border-radius:16px;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+button:hover {
+  background-position:0 -35px;
+  background-color:#ff3e3e;
+  border-color:#AFAFAF;
+  color:#ffffff;
+  cursor:pointer;
+  text-decoration:none;
+}
+
+input[type="radio"] {
+    -ms-transform: scale(2); /* Untu IE  */
+    -webkit-transform: scale(2); /* untuk Chrome, Mozilla,Safari, Opera */
+    transform: scale(2);
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 18px;
+	left: 3px;
+	top: 4px;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #ccc;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #eee;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+body {
+  min-height: 100vh;
+  padding: clamp(12px, 3vw, 32px);
+  background: #f3f6fb;
+}
+
+table.text_normal {
+  display: table;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #e1e8f0;
+  border-radius: 16px;
+  border-spacing: 0;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(23, 43, 77, .08);
+  overflow: hidden;
+}
+
+table.text_normal > tbody > tr > td {
+  padding: clamp(14px, 3vw, 28px);
+  vertical-align: top;
+}
+
+table.text_normal > tbody > tr > td:first-child {
+  width: 76px;
+  padding-right: 0;
+}
+
+table.text_normal p {
+  margin: 0 0 14px;
+}
+
+table.text_normal p:last-child {
+  margin-bottom: 0;
+}
+
+table.text_normal ol,
+table.text_normal ul {
+  margin: 12px 0;
+  padding-left: 1.6em;
+}
+
+table.text_normal li {
+  margin: 7px 0;
+  padding-left: 4px;
+}
+
+table.text_normal table {
+  width: 100%;
+  margin: 14px 0;
+  border: 1px solid #dce5ef;
+  border-collapse: collapse;
+  background: #fff;
+  font-size: .95em;
+}
+
+table.text_normal table th,
+table.text_normal table td {
+  padding: 9px 12px;
+  border: 1px solid #dce5ef;
+  vertical-align: top;
+}
+
+table.text_normal table th {
+  background: #eef4f8;
+  font-weight: 700;
+}
+
+table.text_normal sub,
+table.text_normal sup {
+  line-height: 0;
+}
+
+.text_normal {
+  color: #23344d;
+  font-size: clamp(16px, 1.5vw, 20px);
+  line-height: 1.7;
+}
+
+.nomor {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 14px;
+  background: #e8f4fa;
+  color: #087ea4;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+table.text_normal img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 14px auto;
+  border-radius: 10px;
+}
+
+/* Sembunyikan tombol Kirim Jawaban legacy dan radio PG tunggal (ditangani oleh toolbar bawah CBT) */
+input[name="jawab"],
+input[value="Kirim Jawaban"],
+input[type="submit"],
+button[type="submit"],
+input[type="radio"][name="jawaban"] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.answer-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.answer-options label.text_normal {
+  display: grid;
+  grid-template-columns: auto 28px minmax(0, 1fr);
+  min-height: 64px;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 12px 16px;
+  border: 1px solid #dce5ef;
+  border-radius: 14px;
+  background: #fff;
+  color: #23344d;
+  cursor: pointer;
+  transition: border-color .18s ease, background-color .18s ease, box-shadow .18s ease;
+}
+
+.answer-options label.text_normal:focus-within,
+.answer-options label.text_normal:has(input:checked) {
+  border-color: #087ea4;
+  background: #eef8fb;
+  box-shadow: 0 0 0 3px rgba(8, 126, 164, .1);
+}
+
+.answer-options input[type="radio"] {
+  margin: 0;
+}
+
+.answer-options label > span:nth-of-type(1) {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: #e8f4fa;
+  color: #075b7a;
+  font-weight: 700;
+}
+
+.answer-option-text {
+  min-width: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+  body {
+    padding: 12px;
+  }
+
+  table.text_normal > tbody > tr > td {
+    padding: 14px;
+  }
+
+  table.text_normal {
+    display: table;
+    overflow: visible;
+  }
+
+  table.text_normal > tbody > tr > td:first-child {
+    width: 56px;
+    padding-right: 0;
+  }
+
+  .nomor {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    font-size: 18px;
+  }
+
+  form[name="form1"] label.text_normal {
+    width: calc(50% - 12px);
+    justify-content: flex-start;
+  }
+
+  form[name="form1"] .container {
+    width: 100%;
+  }
+
+  .answer-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  form[name="form1"] label.text_normal {
+    width: 100%;
+  }
+
+  table.text_normal > tbody > tr > td:first-child {
+    width: 48px;
+  }
+}
