@@ -16,7 +16,7 @@ Platform **Computer Based Test (CBT)** berbasis web untuk pelaksanaan asesmen da
 | Repository | https://github.com/fadhilatulazizi/Tryout-Tka |
 | Bahasa utama | PHP |
 | Database | MySQL |
-| Antarmuka | HTML, CSS, JavaScript, Tailwind CSS CDN |
+| Antarmuka | HTML, CSS, JavaScript, Tailwind CSS |
 
 ## Fitur
 
@@ -30,11 +30,11 @@ Platform **Computer Based Test (CBT)** berbasis web untuk pelaksanaan asesmen da
 - Pengelolaan data siswa dan impor data melalui spreadsheet.
 - Pengelolaan profil/informasi sekolah.
 - Pengaturan jadwal ujian, mata pelajaran, paket soal, durasi, sesi, dan ruang.
-- Pembuatan, pengaturan, serta pengacakan token sesi/ruang.
+- Pengaturan token sesi/ruang.
 
 ### Pelaksanaan ujian
 - Halaman konfirmasi dan lembar ujian peserta.
-- Penyimpanan jawaban menggunakan endpoint AJAX.
+- Penyimpanan jawaban menggunakan AJAX.
 - Penanda soal ragu-ragu dan penyelesaian ujian.
 - Pemantauan status peserta dan aktivitas ujian.
 - Pencatatan serta pemantauan pelanggaran, termasuk indikasi perpindahan tab atau jendela.
@@ -56,59 +56,66 @@ Platform **Computer Based Test (CBT)** berbasis web untuk pelaksanaan asesmen da
 
 ## Teknologi
 
-- **PHP** sebagai bahasa pemrograman sisi server.
-- **MySQL** dengan ekstensi MySQLi untuk operasi database; PDO MySQL juga diperiksa/digunakan oleh konfigurasi koneksi.
-- **HTML, CSS, dan JavaScript** untuk antarmuka dan interaksi aplikasi.
-- **Tailwind CSS CDN** pada halaman portal.
-- **Spreadsheet Reader** untuk membaca berkas spreadsheet (XLS, XLSX, ODS, dan CSV) pada proses impor.
+- **PHP** untuk backend.
+- **MySQL/MariaDB** dengan ekstensi MySQLi dan PDO MySQL.
+- **HTML, CSS, JavaScript** untuk antarmuka dan interaksi.
+- **Tailwind CSS** untuk styling antarmuka.
+- **Spreadsheet Reader** untuk membaca berkas spreadsheet pada proses impor.
 
 ## Struktur Repository
 
 ```text
 Tryout-Tka/
 ├── admin/                 # Panel administrator dan proktor
-├── app/                   # Autentikasi, database init, engine ujian,
-│                          # helper, dan sinkronisasi
+├── app/                   # Autentikasi, helper, engine ujian,
+│                          # inisialisasi database, sinkronisasi
 │   └── vendor/            # Library pembaca spreadsheet
 ├── assets/
-│   ├── css/               # Stylesheet aplikasi
+│   ├── css/               # Stylesheet
 │   ├── images/            # Gambar dan aset antarmuka
-│   └── js/                # JavaScript aplikasi
+│   └── js/                # JavaScript
 ├── cache/                 # Cache aplikasi
+├── config/
+│   ├── app.php            # Konfigurasi utama aplikasi
+│   └── database.php       # Konfigurasi koneksi database
 ├── soal/                  # Paket soal dan aset pendukung
 ├── ujian/                 # Halaman dan endpoint pelaksanaan ujian
 ├── index.php              # Portal utama
 ├── login.php              # Login terpadu
 ├── install.php            # Installer dan inisialisasi database
-└── koneksiku.php          # Jembatan kompatibilitas koneksi
+└── koneksiku.php          # Kompatibilitas koneksi
 ```
 
 ## Persyaratan Server
 
-Mengacu pada pemeriksaan yang dilakukan installer:
-
 - PHP 7.4 atau lebih baru (PHP 8.x direkomendasikan).
-- MySQL/MariaDB yang dapat diakses aplikasi.
-- Ekstensi PHP: MySQLi, PDO MySQL, mbstring, JSON, dan Session.
-- Direktori `config/` dan `cache/` harus tersedia dan dapat ditulis oleh proses PHP.
-- Ekstensi ZIP diperlukan oleh library pembaca spreadsheet untuk dukungan berkas tertentu.
+- MySQL/MariaDB.
+- Ekstensi PHP MySQLi, PDO MySQL, mbstring, JSON, dan Session.
+- Ekstensi ZIP untuk dukungan berkas spreadsheet tertentu.
+- Direktori `config/` dan `cache/` dengan permission yang sesuai.
 
-## Instalasi dan Konfigurasi
+## Instalasi
 
-1. Siapkan hosting/web server dengan PHP dan MySQL/MariaDB sesuai persyaratan.
-2. Unggah source code ke direktori aplikasi pada hosting.
-3. Siapkan direktori `config/` dan `cache/`, lalu atur permission tulis yang diperlukan.
-4. Pastikan file konfigurasi aplikasi tersedia. **Catatan repository:** source code saat ini memanggil `config/app.php`, tetapi file tersebut tidak termasuk dalam tree repository. Installer `install.php` membuat `config/database.php`; file `config/app.php` tetap perlu disediakan sesuai konfigurasi aplikasi sebelum halaman yang memanggilnya dijalankan.
-5. Buka `/install.php` melalui browser untuk mengisi koneksi database, identitas sekolah, dan akun administrator serta menjalankan inisialisasi skema.
-6. Setelah instalasi berhasil, pastikan installer terkunci dan akses halaman admin serta portal peserta untuk pengujian.
+1. Siapkan hosting/web server dengan PHP dan MySQL/MariaDB.
+2. Unggah source code ke direktori aplikasi.
+3. Buat database dan siapkan user database dengan hak akses yang diperlukan.
+4. Sesuaikan `config/database.php` dengan kredensial database lingkungan instalasi. Utamakan environment variables untuk menyimpan kredensial.
+5. Periksa `config/app.php` dan sesuaikan pengaturan aplikasi bila diperlukan.
+6. Buka `/install.php` melalui browser untuk menjalankan proses inisialisasi database dan pengaturan awal.
+7. Setelah instalasi selesai, pastikan installer terkunci dan uji login administrator serta peserta.
 
-**Penting untuk keamanan produksi:** gunakan password administrator yang kuat, jangan membagikan file konfigurasi atau kredensial database, batasi akses ke installer setelah setup, dan pastikan direktori konfigurasi/cache tidak dapat diakses publik secara langsung.
+## Keamanan
 
-## Catatan Pengembangan
+- Jangan menyimpan password database, API key, atau kredensial produksi di repository.
+- Gunakan environment variables atau konfigurasi rahasia di luar web root untuk kredensial.
+- Jika kredensial database yang pernah di-commit merupakan kredensial aktif, segera ganti/rotasi password database tersebut.
+- Batasi akses installer setelah instalasi selesai.
+- Gunakan HTTPS dan password administrator yang kuat.
+- Jangan commit data peserta atau hasil ujian yang bersifat pribadi.
 
-- Struktur konfigurasi dan kebutuhan deployment dapat berbeda antara lingkungan lokal dan hosting.
-- Repository belum menyertakan file konfigurasi runtime `config/app.php` maupun kredensial database. Jangan commit password, API key, atau data peserta ke repository publik.
-- Uji proses instalasi pada database kosong/staging sebelum melakukan perubahan pada server produksi.
+## Status
+
+Aplikasi telah tersedia secara online di **https://try-out.siskapro.my.id/**.
 
 ## Lisensi
 
